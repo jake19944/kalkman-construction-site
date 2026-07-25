@@ -1,0 +1,56 @@
+# Kalkman Construction — website source
+
+Static site, no build step, no dependencies. Hosted free on GitHub Pages at
+www.kalkman-construction.com.
+
+## Structure
+
+URLs deliberately match the previous WordPress site exactly, so nothing that
+Google has already indexed breaks. GitHub Pages serves `about/index.html` at
+`/about/`, which is how the match works — **don't rename these folders.**
+
+    /                                   index.html
+    /about/                             who we are
+    /contact/                           contact page
+    /gallery/                           project gallery (supports ?cat=Decks)
+    /blog/                              blog index
+    /areas-we-serve/                    service area overview
+    /privacy-policy/
+    /services/kitchen-remodelers/
+    /services/bathroom-remodelers/
+    /services/home-remodeling-contractors/
+    /services/new-home-builders/
+    /services/home-addition-contractors/
+    /services/deck-contractors/
+    /services/custom-cabinetry-built-ins/
+    /services/basement-garage-conversions/
+    /lakeside-mt/
+    /bigfork-mt/
+
+`assets/` holds photos, the logo, and `site.js`. `sitemap.xml`, `robots.txt`,
+`CNAME`, and `.nojekyll` are all required — don't delete them.
+
+## Contact form
+
+Formspree endpoint `https://formspree.io/f/xbdnpwdv`, set on every page.
+Submits by AJAX so the visitor stays put: the form swaps to a thank-you panel
+on success, or shows a "call us instead" message if it fails.
+
+Field names matter: `email` and `message` must keep those exact names —
+Formspree uses `email` to set reply-to, so you can just hit Reply on a lead.
+`_subject` sets the email subject, `_gotcha` is a spam honeypot.
+
+## Making updates
+
+Any file can be edited in the GitHub web UI (open file → pencil → commit) or
+replaced via "Add file → Upload files". Changes go live a minute or two after
+committing to `main`.
+
+Adding a new photo to the gallery: upload the image to `assets/`, then add a
+matching `<div class="g-item" data-cat="...">` block in `gallery/index.html`.
+
+## Regenerating
+
+The site was generated from templates so headers, footers, and the contact form
+stay identical across all 17 pages. If you need a change applied site-wide,
+it's a template change rather than 17 edits.
